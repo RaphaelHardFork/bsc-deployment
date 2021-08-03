@@ -76,3 +76,7 @@ As in Ethereum testnet or mainnet use:
 ```zsh
 npx hardhat run --network polygonTestnet scripts/CONTRACT-deploy.js
 ```
+
+# Deployed contract
+
+**address:** 0xa5F6e9625Fc4FA8ae55F4B46De03Cda6C47b9Bad
