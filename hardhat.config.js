@@ -1,5 +1,4 @@
 require('@nomiclabs/hardhat-waffle')
-require('@nomiclabs/hardhat-solhint')
 require('hardhat-docgen')
 require('dotenv').config()
 
@@ -30,6 +29,23 @@ module.exports = {
     },
     goerli: {
       url: `https://goerli.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
+    bscTestnet: {
+      url: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+      chainId: 97,
+      gasPrice: 20000000000,
+      accounts: [`0x${PRIVATE_KEY}`],
+      // testnet link: https://testnet.bscscan.com/
+    },
+    bscMainnet: {
+      url: 'https://bsc-dataseed.binance.org/',
+      chainId: 56,
+      gasPrice: 20000000000,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
+    polygonTestnet: {
+      url: 'https://rpc-mumbai.maticvigil.com',
       accounts: [`0x${PRIVATE_KEY}`],
     },
   },

@@ -1,21 +1,35 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable no-unused-vars */
 const { expect } = require('chai')
 const { ethers } = require('hardhat')
 
 // some tests: https://github.com/RaphaelHardFork/ico-hardhat
 
-const CONTRACT_NAME = 'Contract'
+const CONTRACT_NAME = 'TibetanSandFoxCoin'
 
-describe('Contract', function () {
-  let Contract, contract, dev, owner
+describe('TibetanSandFoxCoin', function () {
+  let TibetanSandFoxCoin, tibetanSandFoxCoin, dev, owner
 
-  const SUPPLY = ethers.utils.parseEther('100000')
+  const SUPPLY = ethers.utils.parseEther('37000')
   const ADDRESS_ZERO = ethers.constants.AddressZero
 
   beforeEach(async function () {
     ;[dev, owner] = await ethers.getSigners()
-    Contract = await ethers.getContractFactory(CONTRACT_NAME)
-    contract = await Contract.connect(dev).deploy()
-    await contract.deployed()
+    TibetanSandFoxCoin = await ethers.getContractFactory(CONTRACT_NAME)
+    tibetanSandFoxCoin = await TibetanSandFoxCoin.connect(dev).deploy(
+      SUPPLY,
+      owner.address
+    )
+    await tibetanSandFoxCoin.deployed()
+  })
+
+  describe('Deployment', function () {
+    it('should have name', async function () {
+      expect(await tibetanSandFoxCoin.name()).to.equal('TibetanSandFoxCoin')
+    })
+
+    it('should have symbol', async function () {
+      expect(await tibetanSandFoxCoin.symbol()).to.equal('TSFC')
+    })
   })
 })
